@@ -1,2 +1,2 @@
 # WaveSphere
-Wave Sphere 
+Wave Sphere Media Art
