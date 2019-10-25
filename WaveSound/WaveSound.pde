@@ -66,15 +66,6 @@ void setup() {
   in.disableMonitoring();
 }
 
-boolean isInnerMouse(float posx, float posy, int boundary) {
-  if (posx > objectX - boundary && posx < objectX + boundary) {
-    if (posy > objectY - boundary && posy < objectY + boundary) {
-      return true;
-    }
-  }
-  return false;
-}
-
 void drawingSphere(float X[], float Y[], float Z[], int xLoc, int yLoc, float dX[], float dY[]) {
   for ( N = 0; N <= Nmax; N++ ) {
     for ( NN = N+1; NN <= Nmax; NN++ ) {
@@ -117,14 +108,10 @@ void drawingSphere(float X[], float Y[], float Z[], int xLoc, int yLoc, float dX
     Z[N] = Z[N] + (Z[N]*(200-L)/(2*L)) ;
     KZ = Z[N] ; 
     KX = X[N] ;
-    //Z[N] = (KZ*cos(float(300-mouseX)/10000))-(KX*sin(float(300-mouseX)/10000)) ;
-    //X[N] = (KZ*sin(float(300-mouseX)/10000))+(KX*cos(float(300-mouseX)/10000)) ;
     Z[N] = (KZ*cos(float(100)/10000))-(KX*sin(float(100)/10000)) ;
     X[N] = (KZ*sin(float(100)/10000))+(KX*cos(float(100)/10000)) ;
     KZ = Z[N] ; 
     KY = Y[N] ;
-    //Z[N] = (KZ*cos(float(300-mouseY)/10000))-(KY*sin(float(300-mouseY)/10000)) ;
-    //Y[N] = (KZ*sin(float(300-mouseY)/10000))+(KY*cos(float(300-mouseY)/10000)) ;
     Z[N] = (KZ*cos(float(100)/10000))-(KY*sin(float(100)/10000)) ;
     Y[N] = (KZ*sin(float(100)/10000))+(KY*cos(float(100)/10000)) ;
     dV[N] = dV[N] - (V[N]*HH) ; 
@@ -168,14 +155,4 @@ void draw() {
   background(0);
   drawingSphere(X, Y, Z, objectX, objectY, dX, dY);
   timePrev=millis();
-}
-
-void mouseDragged() {
-  //objectX = mouseX;
-  //objectY = mouseY;
-  //isDragged = true;
-}
-
-void mouseReleased() {
-  isDragged = false;
 }
